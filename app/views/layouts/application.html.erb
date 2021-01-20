@@ -10,6 +10,17 @@
   </head>
 
   <body>
+    <% if current_user %>
+      <%= button_to "Logout", destroy_user_session_path(current_user), method: :delete %>
+
+      <%= button_to "Edit", edit_user_registration_path(current_user)%>
+
+      <% if current_user.admin? %>
+        <%= button_to "Users", users_index_path, method: :get %>
+      <% end %>
+    <% end %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

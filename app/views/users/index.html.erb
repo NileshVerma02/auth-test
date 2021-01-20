@@ -1,0 +1,8 @@
+<h1>List of all users</h1>
+<% User.all.each do |user| %>
+  <% unless user.admin? %>
+    <li>
+      <%= link_to "#{user.email}", edit_user_registration_path(user) %><br />
+    </li>
+  <% end %>
+<% end %>
